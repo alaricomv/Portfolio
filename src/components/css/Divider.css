@@ -1,0 +1,10 @@
+/* src/components/css/Divider.css */
+
+@keyframes moveWaves {
+  from { transform: translateX(0) scaleY(0.5); }
+  to   { transform: translateX(-50%) scaleY(0.5); }
+}
+
+.wave-animation {
+  animation: moveWaves 30s linear infinite;
+}
