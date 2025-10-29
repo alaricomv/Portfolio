@@ -3,6 +3,7 @@ import { HeroSection } from "../components/HeroSection";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { EducationSection } from "../components/EducationSection";
 import { WorkSection } from "../components/WorkSection";
+import { ProjectsSection } from "../components/ProjectsSection";
 export const Home = () => {
   return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
     <Navbar />
@@ -11,6 +12,7 @@ export const Home = () => {
       <HeroSection />
       <EducationSection />
       <WorkSection />
+      <ProjectsSection />
     </main>
   </div>;
 };
