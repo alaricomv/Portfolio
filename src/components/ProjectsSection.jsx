@@ -62,8 +62,7 @@ const projects = [
       "User authentication",
       "Task scheduling",
       "Team collaboration"
-    ],
-    githubLink: "#",
+    ]
   },
   {
     title: "Portfolio Website",
@@ -87,7 +86,7 @@ const otherProjects = [
     title: "Portfolio Website",
     subtitle: "Personal Portfolio",
     description: "A responsive portfolio website built with React and Tailwind CSS.",
-    imageUrls: ["/images/portfolio.png"],
+    
     link: "",
     dateRange: "2025",
     technologies: ["React", "Tailwind CSS", "Framer Motion"],
@@ -154,10 +153,12 @@ export const ProjectsSection = () => {
                   </div>
                 </div>
               </motion.a>
-              {/* GitHub Button */}
-              <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mt-6">
-                <FaGithub className="text-foreground w-8 h-8 " />
-              </a>
+              {/* GitHub Button - Only render if githubLink is not empty */}
+              {project.githubLink && (
+                <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mt-6">
+                  <FaGithub className="text-foreground w-8 h-8 " />
+                </a>
+              )}
             </div>
           ))}
         </div>
@@ -180,7 +181,9 @@ export const ProjectsSection = () => {
                 className="bg-card rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow block relative h-full flex flex-col"
               >
                 <div className="overflow-hidden rounded-t-lg">
-                  <ImageCarousel images={project.imageUrls} />
+                  {project.imageUrls && (
+                    <ImageCarousel images={project.imageUrls} />
+                  )}
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="mb-3">
@@ -215,10 +218,12 @@ export const ProjectsSection = () => {
                   </div>
                 </div>
               </motion.a>
-              {/* GitHub Button */}
-              <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mt-4">
-                <FaGithub className="text-foreground w-8 h-8 " />
-              </a>
+              {/* GitHub Button - Only render if githubLink is not empty */}
+              {project.githubLink && (
+                <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mt-4">
+                  <FaGithub className="text-foreground w-8 h-8 " />
+                </a>
+              )}
             </div>
           ))}
         </div>
