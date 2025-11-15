@@ -3,6 +3,7 @@ import Typewriter from "typewriter-effect";
 import { ArrowDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./css/Hero.css";
+import heroGif from "../assets/images/hero-gif.gif"; 
 
 export const HeroSection = () => {
   const [showScroll, setShowScroll] = useState(true);
@@ -51,77 +52,117 @@ export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4"
+      className="relative min-h-screen flex items-center px-4"
     >
-      <h1 className="text-6xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent animate-gradient mb-4">
-        Alarico Mercado Vazquez
-      </h1>
+      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 py-12">
+        {/* Left: text column */}
+        <div className="w-full md:w-7/12 text-center md:text-left">
+          <h1 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent animate-gradient mb-4">
+            Alarico Mercado Vazquez
+          </h1>
 
-      {/* Typewriter effect */}
-      <h2 className="text-2xl sm:text-3xl font-medium text-center text-muted-foreground">
-        <Typewriter
-          options={{
-            strings: ["Full-Stack Developer", "Software Developer"],
-            autoStart: true,
-            loop: true,
-            delay: 75,
-          }}
-        />
-      </h2>
+          <h2 className="text-xl md:text-2xl font-medium mb-4 text-muted-foreground">
+            <Typewriter
+              options={{
+                strings: ["Full-Stack Developer", "Software Developer"],
+                autoStart: true,
+                loop: true,
+                delay: 75,
+              }}
+            />
+          </h2>
 
-      <p className="mt-6 text-base sm:text-lg text-center max-w-xl text-muted-foreground">
-        I am a passionate developer with experience in building web applications.
-      </p>
+          <p className="mb-6 text-base md:text-lg text-muted-foreground max-w-xl mx-auto md:mx-0">
+            I am a passionate developer with experience in building web applications.
+          </p>
 
-      {/* Button to open PDF popup */}
-      <button
-        onClick={togglePopup}
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        My CV
-      </button>
+          <div className="flex flex-col sm:flex-row items-center md:items-start gap-3 md:gap-4">
+            <button
+              onClick={togglePopup}
+              className="px-5 py-2 bg-primary text-primary-foreground rounded-md shadow hover:opacity-95"
+            >
+              My CV
+            </button>
+
+            <a
+              href="#projects"
+              className="px-5 py-2 border rounded-md text-foreground bg-transparent hover:bg-card"
+            >
+              View Projects
+            </a>
+          </div>
+        </div>
+
+        {/* Right: gif column */}
+        <div className="w-full md:w-5/12 flex justify-center md:justify-end">
+          <motion.div
+            initial={{ y: 0 }}
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="hidden md:block rounded-lg overflow-hidden"
+            style={{ maxWidth: 360 }}
+          >
+            <img
+              src={heroGif}
+              alt="Animated illustration"
+              className="w-72 h-72 md:w-96 md:h-96 object-cover"
+              loading="lazy"
+            />
+          </motion.div>
+        </div>
+      </div>
 
       {/* Popup for PDF viewer */}
       <AnimatePresence>
         {showPopup && (
           <motion.div
-            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
             <div
-              ref={popupRef} // Attach ref to the popup
-              className="bg-white rounded-lg p-4 max-w-7xl w-full" // Increased max width
+              ref={popupRef}
+              className="bg-white rounded-lg p-4 max-w-4xl w-full mx-4 md:mx-0"
+              style={{ height: "85vh", display: "flex", flexDirection: "column", overflow: "hidden" }}
             >
-              <button
-                onClick={togglePopup}
-                className="absolute top-2 right-2 text-gray-600"
-              >
-                &times;
-              </button>
-              <h3 className="text-lg font-semibold mb-2">PDF Viewer</h3>
-              <iframe
-                src="src/assets/CV2025_Alarico_Mercado.pdf" // Replace with your PDF file path
-                width="100%"
-                height="700px" // Increased height
-                className="border"
-                title="PDF Viewer"
-              />
-              <a
-                href="src/assets/CV2025_Alarico_Mercado.pdf" // Replace with your PDF file path
-                download
-                className="mt-2 inline-block text-blue-500 hover:underline"
-              >
-                Download PDF
-              </a>
+              <div className="flex items-start justify-between">
+                <h3 className="text-lg font-semibold mb-2">PDF Viewer</h3>
+                <button
+                  onClick={togglePopup}
+                  className="ml-4 text-gray-600"
+                  aria-label="Close"
+                >
+                  &times;
+                </button>
+              </div>
+
+              <div className="flex-1 min-h-0">
+                <iframe
+                  src="src/assets/CV2025_Alarico_Mercado.pdf"
+                  title="PDF Viewer"
+                  className="w-full h-full border"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  style={{ width: "100%", height: "100%", border: 0, display: "block" }}
+                />
+              </div>
+
+              <div className="mt-3">
+                <a
+                  href="src/assets/CV2025_Alarico_Mercado.pdf"
+                  download
+                  className="inline-block text-blue-500 hover:underline"
+                >
+                  Download PDF
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Scroll indicator with fade-out */}
+      {/* Scroll indicator */}
       <AnimatePresence>
         {showScroll && (
           <motion.div

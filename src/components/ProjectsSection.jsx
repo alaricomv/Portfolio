@@ -114,7 +114,7 @@ export const ProjectsSection = () => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.5, zIndex: 20 }}
+                whileHover={{ scale: 1.05, zIndex: 20 }}
                 className="bg-card rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow block relative h-full flex flex-col"
               >
                 <div className="overflow-hidden rounded-t-lg">
@@ -177,7 +177,7 @@ export const ProjectsSection = () => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.5, zIndex: 20 }}
+                whileHover={{ scale: 1.05, zIndex: 20 }}
                 className="bg-card rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow block relative h-full flex flex-col"
               >
                 <div className="overflow-hidden rounded-t-lg">
