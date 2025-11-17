@@ -1,6 +1,5 @@
 import {cn} from "@/lib/utils";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
 import Divider from "./Divider";
@@ -8,7 +7,9 @@ import Divider from "./Divider";
 const navItems = [
     { name: "Home", href: "#hero" },
     { name: "Education", href: "#education" },
+    { name: "Experience", href: "#work" },
     { name: "Projects", href: "#projects" },
+    { name: "Skills", href: "#skills" },
     { name: "Contact", href: "#contact" }
 ];
 
@@ -59,9 +60,9 @@ export const Navbar = () => {
     <ul className="hidden md:flex space-x-8 z-40">
       {navItems.map((item) => (
         <li key={item.name}>
-          <Link to={item.href} className="text-foreground/80 hover:text-primary transition-colors duration-300">
+          <a href={item.href} className="text-foreground/80 hover:text-primary transition-colors duration-300">
             {item.name}
-          </Link>
+          </a>
         </li>
       ))}
     </ul>

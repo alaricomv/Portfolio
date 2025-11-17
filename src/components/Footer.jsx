@@ -3,6 +3,14 @@ import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+const navItems = [
+    { name: "Home", href: "#hero" },
+    { name: "Education", href: "#education" },
+    { name: "Experience", href: "#work" },
+    { name: "Projects", href: "#projects" },
+    { name: "Skills", href: "#skills" },
+    { name: "Contact", href: "#contact" }
+];
 
   return (
     <footer className="border-t border-foreground/10" style={{ backgroundColor: "hsl(var(--wave))" }}>
@@ -15,26 +23,17 @@ export const Footer = () => {
             transition={{ duration: 0.4, delay: 0.05 }}
           >
             <ul className="flex flex-wrap gap-6 text-sm">
-              <li>
-                <a href="#hero" className="text-muted-foreground hover:text-foreground transition">
-                  Home
+              {navItems.map((item) => (
+                <li key={item.name}>
+                <a
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                >
+                {item.name}
                 </a>
-              </li>
-              <li>
-                <a href="#projects" className="text-muted-foreground hover:text-foreground transition">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#education" className="text-muted-foreground hover:text-foreground transition">
-                  Education
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-muted-foreground hover:text-foreground transition">
-                  Contact
-                </a>
-              </li>
+                </li>
+            ))}
             </ul>
           </motion.div>
 
