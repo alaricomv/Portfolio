@@ -56,7 +56,13 @@ export const HeroSection = () => {
     >
       <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-8 py-12">
         {/* Left: text column */}
-        <div className="w-full md:w-7/12 text-center md:text-left">
+        <motion.div 
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{once: false, amount:0.2}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-full md:w-7/12 text-center md:text-left"
+        >
           <h1 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent animate-gradient mb-4">
             Alarico Mercado Vazquez
           </h1>
@@ -91,10 +97,16 @@ export const HeroSection = () => {
               View Projects
             </a>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right: gif column */}
-        <div className="w-full md:w-5/12 flex justify-center md:justify-end">
+        <motion.div 
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{once: false, amount:0.2}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-full md:w-5/12 flex justify-center md:justify-end"
+        >
           <motion.div
             initial={{ y: 0 }}
             animate={{ y: [0, -8, 0] }}
@@ -109,7 +121,7 @@ export const HeroSection = () => {
               loading="lazy"
             />
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Popup for PDF viewer */}
