@@ -33,6 +33,7 @@ export const WorkSection = () => {
       company: "Sandman Media",
       role: "Full-Stack Developer (Intern)",
       period: "September 2023 – December 2023",
+      logo: "/src/assets/images/sandman.jfif",
       bullets: [
         "Developed and maintained client websites using PHP within a Joomla environment; implemented MVC modules for Joomla and used MySQL for data management.",
         "Fixed bugs and added frontend and backend features across multiple sites; trained new developers during final month; worked with cloud servers.",
@@ -43,6 +44,7 @@ export const WorkSection = () => {
       company: "Oracle",
       role: "Software Developer",
       period: "January 2022 – August 2022",
+      logo: "/src/assets/images/oracle.jfif",
       bullets: [
         "Completed a 1-month remote training on shell usage and git; contributed to public Java projects handling SQL and NoSQL databases, focusing on data extraction and repurposing.",
         "Fixed data-detection bugs and added alerting; implemented features to retrieve specific data and metadata for reuse across similar projects.",
@@ -73,13 +75,26 @@ export const WorkSection = () => {
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex-1 flex flex-col items-center text-center">
-                  <div className="bg-primary text-white p-3 rounded-full shadow-md transform transition-transform group-hover:scale-105 mb-2">
+                  <motion.div 
+                    className="bg-primary text-white p-3 rounded-full shadow-md mb-2"
+                    animate={prefersReducedMotion ? {} : { scale: [1, 1.15, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
                     <Briefcase className="w-5 h-5" />
-                  </div>
+                  </motion.div>
                   <div>
                     <div className="text-sm text-muted-foreground">{w.period}</div>
                     <h3 className="text-2xl md:text-3xl font-semibold mt-1 text-muted-foreground group-hover:text-primary transition-colors">{w.role}</h3>
-                    <div className="text-lg text-primary/90 font-semibold mt-1">{w.company}</div>
+                    <div className="flex items-center justify-center gap-2 mt-1">
+                      {w.logo && (
+                      <img
+                      src={w.logo}
+                      alt={`${w.company} logo`}
+                      className="w-6 h-6 object-contain"
+                      />
+                      )}
+                      <div className="text-lg text-primary/90 font-semibold">{w.company}</div>
+                    </div>
                   </div>
                 </div>
               </div>

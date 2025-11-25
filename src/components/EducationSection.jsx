@@ -1,5 +1,5 @@
 
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, LogOut } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const EducationSection = () => {
@@ -8,6 +8,7 @@ export const EducationSection = () => {
       degree: "Master of Science in Applied Computer Science",
       school: "Fairleigh Dickinson University, Vancouver Canada",
       year: "2023 – 2024",
+      logo: "/src/assets/images/fdu.jfif",
       details: [
         "Specialization: Advanced Computer Programming",
         "Capstone project on scalable web applications",
@@ -17,6 +18,7 @@ export const EducationSection = () => {
       degree: "Bachelor of Science – BSc, Computer Science and Engineering",
       school: "Monterrey Institute of Technology, Mexico",
       year: "2014 – 2018",
+      logo: "/src/assets/images/ITESM.svg",
       details: [
         "Top private university in Mexico",
         "Graduated with strong foundation in algorithms and systems",
@@ -56,7 +58,16 @@ export const EducationSection = () => {
               <h3 className="text-2xl font-semibold group-hover:text-primary transition-colors">
                 {edu.degree}
               </h3>
-              <p className="text-xl text-muted-foreground">{edu.school}</p>
+              <div className="flex items-center justify-center gap-2 mt-2">
+              {edu.logo && (
+                <img
+                  src={edu.logo}
+                  alt={`${edu.school} logo`}
+                  className="w-7 h-7 object-contain"
+                />
+                )}
+                <p className="text-xl text-muted-foreground">{edu.school}</p>
+              </div>
 
               <ul className="mt-4 list-disc list-inside text-base text-muted-foreground space-y-2">
                 {edu.details.map((detail, i) => (
